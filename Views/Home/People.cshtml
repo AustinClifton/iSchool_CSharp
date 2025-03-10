@@ -1,0 +1,69 @@
+@model iSchoolWebAppBogaard.Models.PeopleModel
+@{
+    ViewData["Title"] = Model.PageTitle;
+}
+
+<div class="peopleContainer">
+    <h2>Faculty</h2>
+    <div class="facultyContainer">
+        @foreach (var faculty in @Model.faculty) {
+            <div class="person" onclick="openPersonModal(
+                '@faculty.name', 
+                '@faculty.tagline',
+                '@faculty.imagePath',
+                '@faculty.title',
+                '@faculty.interestArea',
+                '@faculty.office',
+                '@faculty.website',
+                '@faculty.phone',
+                '@faculty.email',
+                '@faculty.twitter',
+                '@faculty.facebook')"
+            >
+                <img class="personImg" src="@faculty.imagePath" alt="picture of a faculty member">
+                <h3>@faculty.name</h3>
+                <h4>@faculty.title</h4>
+            </div>
+        }
+    </div>
+    
+    <h2>Staff</h2>
+    <div class="staffContainer">
+        @foreach (var staff in @Model.staff) {
+            <div class="person" onclick="openPersonModal(
+                '@staff.name', 
+                '@staff.tagline',
+                '@staff.imagePath',
+                '@staff.title',
+                '@staff.interestArea',
+                '@staff.office',
+                '@staff.website',
+                '@staff.phone',
+                '@staff.email',
+                '@staff.twitter',
+                '@staff.facebook')"
+            >
+                <img class="personImg" src="@staff.imagePath" alt="picture of a faculty member">
+                <h3>@staff.name</h3>
+                <h4>@staff.title</h4>
+            </div>
+        }
+    </div>
+    
+    <div id="personModal" class="modal" title="Person Details" style="display: none;">
+        <img id="modalPersonImg" src="" alt="picture of a person" class="personImg" />
+        <div class="personModalText">
+            <h3 id="modalPersonName"></h3>
+            <h4 id="modalPersonTitle"></h4>
+            <p id="modalPersonTagLine"></p>
+            <p id="modalPersonWebsite"></p>
+            <p id="modalPersonEmail"></p>
+            <br/>
+            <p id="modalPersonInterestArea"></p>
+            <p id="modalPersonOffice"></p>
+            <p id="modalPersonPhone"></p>
+            <p id="modalPersonTwitter"></p>
+            <p id="modalPersonFacebook"></p>
+        </div>
+    </div>
+</div>

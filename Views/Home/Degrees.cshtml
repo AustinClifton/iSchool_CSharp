@@ -1,0 +1,71 @@
+@model iSchoolWebAppBogaard.Models.DegreeModel
+@{
+    ViewData["Title"] = Model.PageTitle;
+}
+
+<section class="degrees">
+    <h2>Undergraduate Degrees</h2>
+    @foreach (var degree in Model.Undergraduate) {
+        <div class="collapsible" id="collapsible-@degree.DegreeName">
+            <input type="checkbox" id="collapsible-head-@degree.DegreeName" class="collapsible-checkbox"/>
+            <label for="collapsible-head-@degree.DegreeName">@degree.Title</label>
+
+            <!-- Collapsible content -->
+            <div class="collapsible-text">
+                <p class="degreeDesc">@degree.Description</p>
+                @if (degree.Concentrations != null && degree.Concentrations.Any()) {
+                    <div>
+                        <p class="concentrationsHeader"><strong>Concentrations:</strong></p>
+                        <div class="concentrations">
+                            @foreach (var concentration in degree.Concentrations) {
+                                <div class="degreeConcentration">@concentration</div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <!-- Graduate degrees section -->
+    <h2>Graduate Degrees</h2>
+    @foreach (var degree in Model.Graduate) {
+        @if (degree.DegreeName == "graduate advanced certificates") {
+            <div class="collapsible" id="collapsible-@degree.DegreeName">
+                <input type="checkbox" id="collapsible-head-@degree.DegreeName" class="collapsible-checkbox"/>
+                <label for="collapsible-head-@degree.DegreeName">@degree.DegreeName</label>
+
+                <div class="collapsible-text">
+                    <p class="degreeDesc">This is a special program for graduate advanced certificates.</p>
+                    <p style="font-size: 1.25em">Available Certificates:</p>
+                    <ul>
+                        @foreach (var certificate in degree.AvailableCertificates)
+                        {
+                            <li>@certificate</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        } else {
+            <div class="collapsible" id="collapsible-@degree.DegreeName">
+                <input type="checkbox" id="collapsible-head-@degree.DegreeName" class="collapsible-checkbox"/>
+                <label for="collapsible-head-@degree.DegreeName">@degree.Title</label>
+
+                <!-- Collapsible content for other graduate degrees -->
+                <div class="collapsible-text">
+                    <p class="degreeDesc">@degree.Description</p>
+                    @if (degree.Concentrations != null && degree.Concentrations.Any()) {
+                        <div>
+                            <p class="concentrationsHeader"><strong>Concentrations:</strong></p>
+                            <div class="concentrations">
+                                @foreach (var concentration in degree.Concentrations) {
+                                    <div class="degreeConcentration">@concentration</div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    }
+</section>

@@ -1,0 +1,74 @@
+@model iSchoolWebAppBogaard.Models.MinorModel
+@{
+    ViewData["Title"] = Model.PageTitle;
+}
+
+<section class="degreesWrapper">
+    <h2>Undergraduate Minors</h2>
+    @foreach (var minor in Model.UgMinors)
+    {
+        <div class="collapsible" id="collapsible-minor-@minor.Name">
+            <input type="checkbox" id="collapsible-head-minor-@minor.Name" class="collapsible-checkbox" />
+            <label for="collapsible-head-minor-@minor.Name">@minor.Title</label>
+
+            <!-- Collapsible text section, initially hidden -->
+            <div class="collapsible-text">
+                <p class="minorDesc">@minor.Description</p>
+                @if (minor.Courses != null && minor.Courses.Any())
+                {
+                    <div>
+                        <p class="coursesHeader"><strong>Courses:</strong></p>
+                        <div class="courses">
+                            @foreach (var course in minor.Courses)
+                            {
+                                <div class="minorCourse" onclick="getCourseDetails('@course', 'courseDetails-@minor.Name')">
+                                    @course
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                <div id="courseDetails-@minor.Name"></div>
+            </div>
+        </div>
+    }
+</section>
+
+<script>
+    function getCourseDetails(courseId, courseDetailsId) {
+        fetch(`https://people.rit.edu/~dsbics/proxy/https://ischool.gccis.rit.edu/api/course/courseID=${courseId}`)
+            .then(response => response.json())
+            .then(data => {
+                const courseDetailsDiv = document.getElementById(courseDetailsId);
+                courseDetailsDiv.innerHTML = '';
+
+                const heading = document.createElement('h3');
+                heading.className = "courseHeading";
+                heading.textContent = 'Course Details:';
+                courseDetailsDiv.appendChild(heading);
+
+                const fields = [
+                    { label: 'Course ID: ', value: data.courseID },
+                    { label: 'Course Name: ', value: data.title },
+                    { label: 'Description: ', value: data.description },
+                ];
+
+                fields.forEach(field => {
+                    const p = document.createElement('p');
+                    const strong = document.createElement('strong');
+                    strong.textContent = field.label;
+                    p.appendChild(strong);
+                    p.appendChild(document.createTextNode(field.value));
+                    courseDetailsDiv.appendChild(p);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching course data:', error);
+                const courseDetailsDiv = document.getElementById(courseDetailsId);
+                courseDetailsDiv.innerHTML = '';
+                const errorMessage = document.createElement('p');
+                errorMessage.textContent = 'Error fetching course data.';
+                courseDetailsDiv.appendChild(errorMessage);
+            });
+    }
+</script>

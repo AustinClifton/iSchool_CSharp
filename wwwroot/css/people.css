@@ -1,0 +1,104 @@
+/* CSS FOR ISCHOOL PEOPLE */
+
+/* css for people container containing both types of people */
+.peopleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 10px;
+}
+.peopleContainer h2 {
+    display: flex;
+    justify-content: start;
+    width: 65%;
+
+    margin-left: 5%;
+
+    font-size: 3.5em;
+}
+/* css for both containers of people */
+.facultyContainer, .staffContainer {
+    display: flex;
+
+    width: 65%;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+/* add extra margin to bottom of bottom container */
+.staffContainer {
+    margin-bottom: 25px;
+}
+
+/* css for person of either staff or faculty */
+.person {
+    position: relative;
+    display: inline-table;
+    min-height: 260px;
+    width: 200px;
+    
+    margin: 10px;
+
+    border: 1px solid rgb(138, 138, 138);
+    -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
+}
+.person h3 { /* person name */
+    padding: 3% 5% 0 5%;
+    margin: 0;
+
+    font-size: 1.3em;
+    color: black;
+}
+.person h4 { /* person title */
+    padding: 0% 5% 3% 5%;
+    margin: 0;
+
+    font-size: 1em;
+    font-weight: 100;
+    font-style: italic;
+}
+.person:hover {
+    cursor: pointer;
+}
+.personImg {
+    display: flex;
+    width: 200px;
+    height: 200px;
+
+    margin: 0;
+    padding: 0;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    object-fit:cover;
+}
+
+.modal {
+    display: flex;
+}
+.modal a:focus {
+    outline: none;
+}
+.personModalText {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 5px;
+    
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.personModalText p {
+    margin: 0;
+    padding: 0;
+}
+.personModalText h4 {
+    font-size: 1.15em;
+    margin: 0;
+}
+.websiteLink {
+    color: blue !important;
+    font-style: italic;
+}

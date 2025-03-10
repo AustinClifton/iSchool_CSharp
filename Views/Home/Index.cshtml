@@ -1,0 +1,13 @@
+﻿@model iSchoolWebAppBogaard.Models.IndexModel
+@{
+    ViewData["Title"] = Model.PageTitle;
+}
+
+<h1 class="aboutH1">@Model.title.</h1>
+<section class="about">
+    <p class="aboutDesc">@Model.description</p>
+    <hr/>
+    <p class="aboutQuote">"@Model.quote"</p>
+    <hr/>
+    <p class="aboutQuoteAuthor">- @Model.quoteAuthor</p>
+</section>

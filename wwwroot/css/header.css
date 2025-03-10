@@ -1,0 +1,29 @@
+/* css for header image */
+.ritImage {
+    flex: 0 0 25%;
+    height: 100%;
+    margin-left: 5%;
+}
+/* css for html code image that spans the width of the page */
+.headerImg {
+    width: 100vw;
+    border-top: 3px solid black;
+    border-bottom: 5px solid #F76902;
+}
+
+.navbar {
+    padding: 0;
+    margin: 0;
+}
+.nav-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 60px;
+    
+    color: black !important;
+}
+.nav-link:hover {
+    background: rgb(0,0,0,.2);
+}

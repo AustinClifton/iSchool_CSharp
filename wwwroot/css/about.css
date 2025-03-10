@@ -1,0 +1,23 @@
+.aboutH1 {
+    margin: 2%;
+    font-size: 3em;
+}
+.about {
+    display: grid;
+    place-items: center;
+    
+    margin: 1% 15%;
+    padding: 1em;
+    
+    border: solid 8px #F76902;
+    text-align:center;
+}
+.aboutDesc {
+    font-size: 1.25em;
+}
+.aboutQuote {
+    font-style: italic;
+}
+.aboutQuoteAuthor {
+    
+}

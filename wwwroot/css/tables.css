@@ -1,0 +1,10 @@
+.tableSection {
+    display: block;
+    margin: 0 auto;
+    width: 75%;
+}
+
+.tableSection h1 {
+    margin: 2%;
+    font-size: 3em;
+}
